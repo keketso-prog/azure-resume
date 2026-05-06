@@ -1,4 +1,4 @@
-name: Deploy to Azure Blob Storage
+xname: Deploy to Azure Blob Storage
 
 on:
   push:
@@ -13,12 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Upload to Azure Blob Storage
+      - name: Upload ONLY index.html
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch \
+            az storage blob upload \
               --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
               --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --destination '$web' \
-              --source .
+              --container-name '$web' \
+              --file index.html \
+              --name index.html \
+              --overwrite true
