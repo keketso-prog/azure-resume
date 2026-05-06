@@ -1,4 +1,4 @@
-name: Deploy Clean Resume to Azure
+name: Deploy Resume to Azure Storage
 
 on:
   push:
@@ -10,17 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Upload ONLY index.html
-        uses: azure/CLI@v1
+      - name: Upload index.html only
+        uses: azure/storage-blob-upload@v1
         with:
-          inlineScript: |
-            az storage blob upload \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --account-key ${{ secrets.AZURE_STORAGE_KEY }} \
-              --container-name '$web' \
-              --file index.html \
-              --name index.html \
-              --overwrite true
+          connection-string: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+          container-name: '$web'
+          source: './index.html'
+          destination-path: 'index.html'
