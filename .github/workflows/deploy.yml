@@ -1,4 +1,4 @@
-xname: Deploy to Azure Blob Storage
+name: Deploy Clean Resume to Azure
 
 on:
   push:
