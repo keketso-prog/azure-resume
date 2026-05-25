@@ -1,524 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Keketso Bakaqane — Cloud & IT Professional</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      :root {
-        --bg: #fafaf8;
-        --surface: #ffffff;
-        --border: #e8e6e1;
-        --text: #1a1917;
-        --muted: #6b6860;
-        --accent: #1d6fdb;
-        --accent-light: #eef4ff;
-        --mono: "DM Mono", monospace;
-        --sans: "DM Sans", sans-serif;
-      }
-      body {
-        background: var(--bg);
-        font-family: var(--sans);
-        color: var(--text);
-        min-height: 100vh;
-        padding: 2rem 1rem;
-        overflow-y: scroll;
-      }
-      .page {
-        max-width: 780px;
-        margin: 0 auto;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        padding: 3rem 3.5rem;
-      }
-      header {
-        border-bottom: 2px solid var(--text);
-        padding-bottom: 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .name {
-        font-size: 2.2rem;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-        line-height: 1;
-        margin-bottom: 0.4rem;
-      }
-      .title {
-        font-size: 0.9rem;
-        font-weight: 400;
-        color: var(--muted);
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-        font-family: var(--mono);
-      }
-      .contact-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem 1.2rem;
-        font-size: 0.82rem;
-        font-family: var(--mono);
-        color: var(--muted);
-      }
-      .contact-row a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .contact-row a:hover {
-        text-decoration: underline;
-      }
-      .visitor-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        font-family: var(--mono);
-        font-size: 0.75rem;
-        color: var(--muted);
-        background: var(--accent-light);
-        border: 1px solid #c5d9f5;
-        padding: 0.2rem 0.6rem;
-        border-radius: 2px;
-        margin-top: 0.8rem;
-      }
-      .visitor-dot {
-        width: 6px;
-        height: 6px;
-        background: var(--accent);
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-      }
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.3;
-        }
-      }
-      section {
-        margin-bottom: 2rem;
-      }
-      .section-label {
-        font-family: var(--mono);
-        font-size: 0.7rem;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--muted);
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 0.4rem;
-        margin-bottom: 1.2rem;
-      }
-      .cert-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
-      }
-      .cert-card {
-        border: 1px solid var(--border);
-        padding: 0.9rem 1rem;
-        position: relative;
-      }
-      .cert-card::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: var(--accent);
-      }
-      .cert-name {
-        font-weight: 500;
-        font-size: 0.88rem;
-        margin-bottom: 0.2rem;
-      }
-      .cert-meta {
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        color: var(--muted);
-      }
-      .skill-group {
-        display: flex;
-        gap: 0.8rem;
-        margin-bottom: 0.7rem;
-        align-items: baseline;
-      }
-      .skill-category {
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        color: var(--muted);
-        min-width: 110px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-      .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem;
-      }
-      .tag {
-        font-family: var(--mono);
-        font-size: 0.75rem;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        padding: 0.15rem 0.5rem;
-        color: var(--text);
-      }
-      .project {
-        margin-bottom: 1.4rem;
-        padding-bottom: 1.4rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .project:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
-      }
-      .project-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.3rem;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-      }
-      .project-name {
-        font-weight: 500;
-        font-size: 0.92rem;
-      }
-      .project-link {
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        color: var(--accent);
-        text-decoration: none;
-      }
-      .project-link:hover {
-        text-decoration: underline;
-      }
-      .project-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-        margin-bottom: 0.5rem;
-      }
-      .stack-tag {
-        font-family: var(--mono);
-        font-size: 0.68rem;
-        background: var(--accent-light);
-        color: var(--accent);
-        padding: 0.1rem 0.45rem;
-        border: 1px solid #c5d9f5;
-      }
-      .project-desc {
-        font-size: 0.82rem;
-        line-height: 1.6;
-        color: #3a3835;
-      }
-      .project-desc li {
-        margin-left: 1rem;
-        margin-bottom: 0.2rem;
-      }
-      @media (max-width: 600px) {
-        .page {
-          padding: 2rem 1.5rem;
-        }
-        .cert-grid {
-          grid-template-columns: 1fr;
-        }
-        .skill-group {
-          flex-direction: column;
-          gap: 0.3rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <header>
-        <div class="name">Keketso Bakaqane</div>
-        <div class="title">Cloud & IT Professional · Multi-Cloud</div>
-        <div class="contact-row">
-          <span>📍 Johannesburg, South Africa</span>
-          <a href="mailto:keketsomakhoali93@gmail.com"
-            >keketsomakhoali93@gmail.com</a
-          >
-          <a
-            href="https://www.linkedin.com/in/keketso-bakaqane-674066219"
-            target="_blank"
-            >linkedin.com/in/keketso-bakaqane</a
-          >
-          <a href="https://github.com/keketso-prog" target="_blank"
-            >github.com/keketso-prog</a
-          >
-        </div>
-        <div class="visitor-badge">
-          <span class="visitor-dot"></span>
-          <span id="visitor-count">—</span> profile views
-        </div>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keketso Bakaqane – Cloud Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: #1e1e2e;
+      --accent: #00c2ff;
+      --accent2: #7b61ff;
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --tag-bg: #1a1a2e;
+    }
 
-      <section>
-        <div class="section-label">Certifications</div>
-        <div class="cert-grid">
-          <div class="cert-card">
-            <div class="cert-name">Microsoft Azure Fundamentals</div>
-            <div class="cert-meta">AZ-900 · Microsoft · 2024</div>
-          </div>
-          <div class="cert-card">
-            <div class="cert-name">AWS Cloud Practitioner</div>
-            <div class="cert-meta">CLF-C02 · Amazon Web Services · 2024</div>
-          </div>
-        </div>
-      </section>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-      <section>
-        <div class="section-label">Skills</div>
-        <div class="skill-group">
-          <span class="skill-category">Cloud — Azure</span>
-          <div class="skill-tags">
-            <span class="tag">Azure Functions</span>
-            <span class="tag">Blob Storage</span>
-            <span class="tag">CosmosDB</span>
-            <span class="tag">Azure CDN</span>
-            <span class="tag">Azure Portal</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <span class="skill-category">Cloud — AWS</span>
-          <div class="skill-tags">
-            <span class="tag">S3</span>
-            <span class="tag">Lambda</span>
-            <span class="tag">EC2</span>
-            <span class="tag">IAM</span>
-            <span class="tag">CloudFront</span>
-            <span class="tag">Amazon Lex</span>
-            <span class="tag">Rekognition</span>
-            <span class="tag">CloudFormation</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <span class="skill-category">DevOps & IaC</span>
-          <div class="skill-tags">
-            <span class="tag">Terraform</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">CI/CD</span>
-            <span class="tag">Azure Bicep</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <span class="skill-category">Languages</span>
-          <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Bash</span>
-          </div>
-        </div>
-      </section>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
 
-      <section>
-        <div class="section-label">Projects</div>
+    /* Animated grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,194,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,194,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        <div class="project">
-          <div class="project-header">
-            <span class="project-name">☁️ Azure Cloud Resume Challenge</span>
-            <a
-              class="project-link"
-              href="https://github.com/keketso-prog"
-              target="_blank"
-              >github.com/keketso-prog/azure-resume</a
-            >
-          </div>
-          <div class="project-stack">
-            <span class="stack-tag">Azure Functions</span>
-            <span class="stack-tag">CosmosDB</span>
-            <span class="stack-tag">Blob Storage</span>
-            <span class="stack-tag">Azure CDN</span>
-            <span class="stack-tag">GitHub Actions</span>
-            <span class="stack-tag">Terraform</span>
-          </div>
-          <ul class="project-desc">
-            <li>
-              Deployed a static resume website on Azure Blob Storage with CDN
-              and custom domain enforcing HTTPS
-            </li>
-            <li>
-              Built a serverless visitor counter API using Azure Functions
-              (Python) backed by CosmosDB NoSQL database
-            </li>
-            <li>
-              Automated deployments via GitHub Actions CI/CD pipeline; all
-              infrastructure defined as code using Terraform
-            </li>
-          </ul>
-        </div>
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      position: relative;
+      z-index: 1;
+    }
 
-        <div class="project">
-          <div class="project-header">
-            <span class="project-name">🌐 Static Website Hosting on AWS</span>
-            <a
-              class="project-link"
-              href="https://github.com/keketso-prog"
-              target="_blank"
-              >github.com/keketso-prog/aws-static-site</a
-            >
-          </div>
-          <div class="project-stack">
-            <span class="stack-tag">S3</span>
-            <span class="stack-tag">CloudFront</span>
-            <span class="stack-tag">Route 53</span>
-            <span class="stack-tag">ACM</span>
-          </div>
-          <ul class="project-desc">
-            <li>
-              Hosted a fully static website on Amazon S3 with global delivery
-              via CloudFront CDN
-            </li>
-            <li>
-              Configured custom domain with Route 53 and SSL/TLS certificate via
-              AWS Certificate Manager
-            </li>
-            <li>
-              Implemented bucket policies and IAM roles to enforce
-              least-privilege access to assets
-            </li>
-          </ul>
-        </div>
+    /* Header */
+    header {
+      margin-bottom: 56px;
+      animation: fadeUp 0.6s ease both;
+    }
 
-        <div class="project">
-          <div class="project-header">
-            <span class="project-name"
-              >🏗️ 3-Tier Cloud Architecture on AWS</span
-            >
-            <a
-              class="project-link"
-              href="https://github.com/keketso-prog"
-              target="_blank"
-              >github.com/keketso-prog/aws-3tier-arch</a
-            >
-          </div>
-          <div class="project-stack">
-            <span class="stack-tag">EC2</span>
-            <span class="stack-tag">VPC</span>
-            <span class="stack-tag">RDS</span>
-            <span class="stack-tag">ALB</span>
-            <span class="stack-tag">CloudFormation</span>
-          </div>
-          <ul class="project-desc">
-            <li>
-              Designed and deployed a production-grade 3-tier architecture (web,
-              application, database) on AWS
-            </li>
-            <li>
-              Configured VPC with public and private subnets, security groups,
-              and an Application Load Balancer
-            </li>
-            <li>
-              Provisioned all infrastructure using CloudFormation for
-              repeatable, version-controlled deployments
-            </li>
-          </ul>
-        </div>
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(0,194,255,0.3);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
 
-        <div class="project">
-          <div class="project-header">
-            <span class="project-name">🤖 AI Chatbot with Amazon Lex</span>
-            <a
-              class="project-link"
-              href="https://github.com/keketso-prog"
-              target="_blank"
-              >github.com/keketso-prog/aws-chatbot</a
-            >
-          </div>
-          <div class="project-stack">
-            <span class="stack-tag">Amazon Lex</span>
-            <span class="stack-tag">Lambda</span>
-            <span class="stack-tag">API Gateway</span>
-            <span class="stack-tag">IAM</span>
-          </div>
-          <ul class="project-desc">
-            <li>
-              Built a conversational AI chatbot using Amazon Lex with custom
-              intents, slots, and utterances
-            </li>
-            <li>
-              Integrated Lambda functions for fulfillment logic and dynamic
-              backend responses
-            </li>
-            <li>
-              Exposed the bot via API Gateway for web integration with proper
-              IAM authentication
-            </li>
-          </ul>
-        </div>
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
 
-        <div class="project">
-          <div class="project-header">
-            <span class="project-name"
-              >👁️ Image Recognition App — AWS Rekognition</span
-            >
-            <a
-              class="project-link"
-              href="https://github.com/keketso-prog"
-              target="_blank"
-              >github.com/keketso-prog/aws-rekognition</a
-            >
-          </div>
-          <div class="project-stack">
-            <span class="stack-tag">Rekognition</span>
-            <span class="stack-tag">S3</span>
-            <span class="stack-tag">Lambda</span>
-            <span class="stack-tag">Python</span>
-            <span class="stack-tag">API Gateway</span>
-          </div>
-          <ul class="project-desc">
-            <li>
-              Built an image analysis app that detects labels, faces, and text
-              using AWS Rekognition
-            </li>
-            <li>
-              Images uploaded to S3 trigger a Lambda function that calls the
-              Rekognition API and returns results
-            </li>
-            <li>
-              Developed a frontend interface allowing users to upload and
-              analyse images in real time
-            </li>
-          </ul>
-        </div>
-      </section>
+    h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .title-line {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .contact-row a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-row a:hover { opacity: 0.7; }
+
+    /* Visitor counter */
+    .counter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 20px;
+    }
+
+    .counter-chip .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    #visitor-count { color: var(--accent); font-weight: 500; }
+
+    /* Sections */
+    section {
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    section:nth-child(2) { animation-delay: 0.1s; }
+    section:nth-child(3) { animation-delay: 0.2s; }
+    section:nth-child(4) { animation-delay: 0.3s; }
+    section:nth-child(5) { animation-delay: 0.4s; }
+    section:nth-child(6) { animation-delay: 0.5s; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Summary */
+    .summary {
+      color: #a0a0b8;
+      line-height: 1.8;
+      font-size: 13px;
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+    }
+
+    /* Certs */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 4px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .cert-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .cert-card .cert-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .cert-card .cert-date {
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* Skills */
+    .skill-group { margin-bottom: 14px; }
+
+    .skill-category {
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: #a0a0b8;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    /* Projects */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 20px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: var(--accent2); }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .project-stack {
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .project-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-card ul li {
+      font-size: 12px;
+      color: #7a7a90;
+      padding: 3px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .project-card ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+    }
+
+    /* Experience */
+    .exp-item {
+      border-left: 1px solid var(--border);
+      padding-left: 20px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .exp-role {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .exp-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      margin-top: 2px;
+    }
+
+    .exp-meta span { color: var(--accent); }
+
+    .exp-item ul { list-style: none; padding: 0; }
+    .exp-item ul li {
+      font-size: 12px;
+      color: #7a7a90;
+      padding: 3px 0 3px 14px;
+      position: relative;
+    }
+
+    .exp-item ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+    }
+
+    /* Education */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-item:last-child { border-bottom: none; }
+    .edu-degree { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px; }
+    .edu-school { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .edu-year { font-size: 12px; color: var(--accent); }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 40px 16px; }
+      .contact-row { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="badge">Available for Opportunities</div>
+    <h1>Keketso<br/><span>Bakaqane</span></h1>
+    <div class="title-line">Junior Cloud Engineer · AWS & Azure Certified</div>
+    <div class="contact-row">
+      <span>Johannesburg, SA</span>
+      <a href="mailto:Keketsomakhoali93@gmail.com">Keketsomakhoali93@gmail.com</a>
+      <span>078-470-6327</span>
+      <a href="https://linkedin.com/in/keketso-bakaqane-674066219" target="_blank">LinkedIn</a>
+      <a href="https://github.com/keketso-prog" target="_blank">GitHub</a>
+    </div>
+    <div class="counter-chip">
+      <span class="dot"></span>
+      <span>Profile views: <span id="visitor-count">...</span></span>
+    </div>
+  </header>
+
+  <!-- Summary -->
+  <section>
+    <div class="section-label">About</div>
+    <p class="summary">IT professional with a Diploma in Information Technology and dual cloud certifications: AWS Certified Cloud Practitioner (Feb 2026) and Microsoft Azure Fundamentals AZ-900 (Mar 2026). Completed an intensive 12-week AWS re/Start programme covering cloud infrastructure, Linux administration, networking, security, and Python automation. Backed by 20+ hands-on AWS labs and four independently deployed cloud projects. Brings a strong foundation in data accuracy and systems operations from three years in government service, directly transferable to cloud governance and security operations.</p>
+  </section>
+
+  <!-- Certifications -->
+  <section>
+    <div class="section-label">Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-date">Feb 2026</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Microsoft Azure Fundamentals (AZ-900)</div>
+        <div class="cert-date">Mar 2026</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">AWS re/Start Programme</div>
+        <div class="cert-date">12-Week Intensive · 2025</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <div class="section-label">Technical Skills</div>
+    <div class="skill-group">
+      <div class="skill-category">// Cloud Platforms</div>
+      <div class="tags">
+        <span class="tag">AWS EC2</span><span class="tag">S3</span><span class="tag">VPC</span>
+        <span class="tag">Lambda</span><span class="tag">RDS</span><span class="tag">DynamoDB</span>
+        <span class="tag">CloudFront</span><span class="tag">IAM</span><span class="tag">Route 53</span>
+        <span class="tag">CloudWatch</span><span class="tag">AWS Lex</span><span class="tag">Rekognition</span>
+        <span class="tag">Microsoft Azure</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-category">// Scripting & Automation</div>
+      <div class="tags">
+        <span class="tag">Python</span><span class="tag">Bash</span>
+        <span class="tag">Git</span><span class="tag">GitHub</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-category">// Networking & Security</div>
+      <div class="tags">
+        <span class="tag">VPC Design</span><span class="tag">Subnetting</span>
+        <span class="tag">Security Groups</span><span class="tag">Network ACLs</span>
+        <span class="tag">IAM Policies</span><span class="tag">MFA</span><span class="tag">SSL/TLS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-category">// Systems & Operations</div>
+      <div class="tags">
+        <span class="tag">Linux Administration</span><span class="tag">Technical Documentation</span>
+        <span class="tag">CRM Systems</span><span class="tag">Data Management</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section>
+    <div class="section-label">Cloud Projects</div>
+
+    <div class="project-card" style="border-color: var(--accent2);">
+      <div class="project-header">
+        <div class="project-name">Azure Cloud Resume Challenge</div>
+        <div class="project-stack">Blob Storage · Azure Functions · Cosmos DB · App Insights · CI/CD</div>
+      </div>
+      <ul>
+        <li>Built and deployed a full-stack serverless resume website on Microsoft Azure hosted via Azure Blob Storage with static website hosting</li>
+        <li>Developed an Azure Function App (REST API) connected to Azure Cosmos DB to track and display a live visitor counter</li>
+        <li>Configured Application Insights and Log Analytics Workspace for end-to-end monitoring and observability</li>
+        <li>Provisioned all infrastructure in South Africa North region; integrated GitHub Actions for automated CI/CD deployment</li>
+      </ul>
     </div>
 
-    <script>
-      async function getVisitorCount() {
-        try {
-          const response = await fetch(
-            "https://YOUR_FUNCTION_APP.azurewebsites.net/api/visitor-counter"
-          );
-          const data = await response.json();
-          document.getElementById("visitor-count").textContent =
-            data.count.toLocaleString();
-        } catch (e) {
-          document.getElementById("visitor-count").textContent = "—";
-        }
-        
-      }
-      getVisitorCount();
-    </script>
-  </body>
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Static Website Hosting on AWS</div>
+        <div class="project-stack">S3 · CloudFront · Route 53</div>
+      </div>
+      <ul>
+        <li>Deployed a static website using S3 with CloudFront CDN achieving global content delivery and 99.99% availability</li>
+        <li>Configured custom domain with SSL/TLS certificates for secure, cost-effective hosting</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Multi-Tier Cloud Architecture Design</div>
+        <div class="project-stack">EC2 · VPC · RDS · Load Balancing</div>
+      </div>
+      <ul>
+        <li>Designed a scalable 3-tier architecture with VPC, public and private subnets across multiple availability zones</li>
+        <li>Implemented security groups and network ACLs for a comprehensive defense-in-depth security posture</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">AWS Lex Chatbot Development</div>
+        <div class="project-stack">AWS Lex · Lambda · API Integration</div>
+      </div>
+      <ul>
+        <li>Built an intelligent conversational chatbot with custom intents, slots, and natural conversation flows</li>
+        <li>Integrated backend services via Lambda functions for dynamic, context-aware responses</li>
+      </ul>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-name">Serverless Image Recognition Pipeline</div>
+        <div class="project-stack">S3 · Lambda · Rekognition · CloudWatch</div>
+      </div>
+      <ul>
+        <li>Architected an event-driven serverless pipeline triggered by S3 image uploads to auto-detect and classify objects</li>
+        <li>Configured Amazon CloudWatch for real-time logging and monitoring across the full pipeline</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section>
+    <div class="section-label">Work Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-role">Scanner / Data Capture Specialist</div>
+      <div class="exp-meta">Department of Home Affairs · Johannesburg &nbsp;|&nbsp; <span>Jul 2022 – Jul 2025</span></div>
+      <ul>
+        <li>Processed birth certificates across multiple hospitals, managing end-to-end workflows using government database systems</li>
+        <li>Maintained 99%+ data capture accuracy while processing 500+ birth certificates monthly — zero data errors on record</li>
+        <li>Troubleshot system issues and resolved documentation discrepancies on-site, ensuring uninterrupted daily operations</li>
+        <li>Operated and navigated digital government platforms, building strong systems literacy in a high-compliance environment</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Sales Agent</div>
+      <div class="exp-meta">Clientele Life · Johannesburg &nbsp;|&nbsp; <span>Jan 2021 – Jun 2022</span></div>
+      <ul>
+        <li>Used CRM systems daily to analyse customer requirements and deliver tailored financial solutions</li>
+        <li>Contributed to team sales strategy development, supporting a 15% revenue increase</li>
+        <li>Maintained accurate customer records, ensuring data integrity across digital platforms</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role">Assistant Administrator</div>
+      <div class="exp-meta">Riese's Food Imports · Johannesburg &nbsp;|&nbsp; <span>Feb 2020 – Dec 2020</span></div>
+      <ul>
+        <li>Managed digital document management platforms and multi-channel communication systems</li>
+        <li>Processed vendor invoices and maintained financial system records with 100% accuracy</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <div class="section-label">Education</div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">Diploma in Information Technology</div>
+        <div class="edu-school">Richfield Graduate Institute</div>
+      </div>
+      <div class="edu-year">2018</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">National Senior Certificate (NQF Level 4)</div>
+        <div class="edu-school">Rhodesfield Technical High School</div>
+      </div>
+      <div class="edu-year">2012</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Keketso Bakaqane · Cloud Engineer</span>
+    <span>github.com/keketso-prog/AWS-RE-START-JOURNEY</span>
+  </footer>
+
+</div>
+
+<script>
+  // Visitor counter — connects to your Azure Function
+  // Replace the URL below with your actual Function App URL once set up
+  async function getVisitorCount() {
+    try {
+      const res = await fetch('https://keketso-resume-func-hqbvanfxb2d7bhem.eastus-01.azurewebsites.net/api/VisitorCounter');
+      const data = await res.json();
+      document.getElementById('visitor-count').textContent = data.count;
+    } catch {
+      document.getElementById('visitor-count').textContent = '–';
+    }
+  }
+  getVisitorCount();
+</script>
+</body>
 </html>
-
-
