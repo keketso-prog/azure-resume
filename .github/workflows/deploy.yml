@@ -1,4 +1,4 @@
-name: Deploy Resume
+name: Deploy Resume Debug
 
 on:
   push:
@@ -10,19 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug start
+        run: echo "Workflow started successfully"
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Upload website files
-        run: |
-          az storage blob upload-batch \
-            --account-name resumerg9ec1 \
-            --destination '$web' \
-            --source . \
-            --overwrite \
-            --auth-mode login
+      - name: Show files
+        run: ls -R
