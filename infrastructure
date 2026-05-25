@@ -1,0 +1,32 @@
+
+                ┌──────────────────────────────┐
+                │        User Browser          │
+                └─────────────┬────────────────┘
+                              │
+                              ▼
+        ┌────────────────────────────────────────┐
+        │  Azure Blob Storage (Static Website)   │
+        │  - HTML / CSS / JS Resume             │
+        └────────────────────┬───────────────────┘
+                             │ API Call (HTTPS)
+                             ▼
+        ┌────────────────────────────────────────┐
+        │      Azure Functions (Backend API)     │
+        │  - HTTP Trigger                       │
+        │  - Visitor Counter Logic              │
+        └────────────────────┬───────────────────┘
+                             │
+              ┌──────────────┴──────────────┐
+              ▼                             ▼
+┌──────────────────────────┐   ┌──────────────────────────┐
+│ Azure Cosmos DB          │   │ Application Insights      │
+│ - Visitor Counter Data   │   │ - Logs & Monitoring       │
+└──────────────────────────┘   └──────────────────────────┘
+
+                             │
+                             ▼
+        ┌────────────────────────────────────────┐
+        │ GitHub Actions CI/CD Pipeline          │
+        │ - Deploy Frontend (Blob Storage)       │
+        │ - Deploy Backend (Azure Functions)     │
+        └────────────────────────────────────────┘
