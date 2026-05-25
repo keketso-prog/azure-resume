@@ -13,10 +13,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Azure Login
+      - name: Azure Login (DEBUG)
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Verify Azure account
+        run: az account show
 
       - name: Upload website files
         run: |
