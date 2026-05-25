@@ -46,9 +46,9 @@ GitHub Actions (CI/CD)
 https://resumerg9ec1.z1.web.core.windows.net/
 
 📂 Project Structure
-/frontend   → Resume website files  
-/backend    → Azure Functions API  
-/infra      → Configuration / deployment files 
+- frontend   → Resume website files  
+- backend    → Azure Functions API  
+- infra      → Configuration / deployment files 
 
 # 💡 Note
 
