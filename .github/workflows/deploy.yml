@@ -1,14 +1,11 @@
 name: Deploy Resume
-
 on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -23,9 +20,10 @@ jobs:
 
       - name: Upload website files
         run: |
-          az storage blob upload-batch \
+          az storage blob upload \
             --account-name resumerg9ec1 \
-            --destination '$web' \
-            --source . \
-            --overwrite \
+            --container-name '$web' \
+            --file index.html \
+            --name index.html \
+            --overwrite true \
             --auth-mode login
