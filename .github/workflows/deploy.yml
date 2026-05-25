@@ -10,15 +10,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Show Azure account
-        run: az account show
-
-      - name: Upload website files
+      - name: Upload index.html to Azure
         run: |
           az storage blob upload \
             --account-name resumerg9ec1 \
@@ -26,4 +18,4 @@ jobs:
             --file index.html \
             --name index.html \
             --overwrite true \
-            --auth-mode login
+            --account-key ${{ secrets.STORAGE_KEY }}
