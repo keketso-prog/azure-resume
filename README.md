@@ -20,6 +20,12 @@ I built a serverless resume website with a real-time visitor counter and a fully
 
 <img width="513" height="652" alt="Screenshot (2132)" src="https://github.com/user-attachments/assets/aa6e2ff7-d5fc-4a92-bc3c-f2e4a9a06f77" />
 
+## 📸 Screenshots
+
+<img width="1594" height="821" alt="Screenshot (2130)" src="https://github.com/user-attachments/assets/61f276a5-6fa5-4eca-9b56-bcc132c19874" />
+
+<img width="1565" height="824" alt="Screenshot (2133)" src="https://github.com/user-attachments/assets/199cc490-094a-4e24-a767-91224fea7256" />
+
 
 This project follows a fully serverless cloud architecture:
 
@@ -54,5 +60,6 @@ https://resumerg9ec1.z1.web.core.windows.net/
 - infra      → Configuration / deployment files 
 
 # 💡 Note
-
 This project is part of my cloud learning journey and was built to strengthen my hands-on experience with Azure cloud services.
+## 💡 Project Impact
+This project demonstrates my ability to build and deploy a full serverless application using Azure services with automation and monitoring.
