@@ -1,4 +1,4 @@
-name: Deploy Resume
+name: FINAL DEBUG TEST
 
 on:
   push:
@@ -6,26 +6,18 @@ on:
       - main
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Step 1
+        run: echo "STEP 1 WORKS"
 
-      - name: Azure Login (DEBUG)
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Step 2
+        run: echo "STEP 2 WORKS"
 
-      - name: Verify Azure account
-        run: az account show
+      - name: Step 3
+        run: uname -a
 
-      - name: Upload website files
-        run: |
-          az storage blob upload-batch \
-            --account-name resumerg9ec1 \
-            --destination '$web' \
-            --source . \
-            --overwrite \
-            --auth-mode login
+      - name: Step 4
+        run: ls -R
