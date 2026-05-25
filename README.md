@@ -18,6 +18,9 @@ I built a serverless resume website with a real-time visitor counter and a fully
 - CI/CD pipeline using GitHub Actions
 - 🏗️ Architecture
 
+<img width="513" height="652" alt="Screenshot (2132)" src="https://github.com/user-attachments/assets/aa6e2ff7-d5fc-4a92-bc3c-f2e4a9a06f77" />
+
+
 This project follows a fully serverless cloud architecture:
 
 - Frontend: Azure Blob Storage (Static Website Hosting)
